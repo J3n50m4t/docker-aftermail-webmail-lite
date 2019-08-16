@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 MAINTAINER AfterLogic Support <dockerimages@j3n50m4t.com>
 
 # installing packages and dependencies
