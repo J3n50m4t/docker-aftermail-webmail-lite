@@ -1,10 +1,10 @@
-FROM ubuntu:trusty
+FROM debian:stretch
 MAINTAINER AfterLogic Support <dockerimages@j3n50m4t.com>
 
 # installing packages and dependencies
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
-RUN apt-get -y install wget unzip supervisor apache2 libapache2-mod-php5 mysql-server php5 php5-common php5-curl php5-fpm php5-cli php5-mysqlnd php5-mcrypt
+RUN apt-get -y install wget unzip supervisor apache2 libapache2-mod-php7.0 mysql-server php7.0 php7.0-common php7.0-curl php7.0-fpm php7.0-cli php7.0-mysqlnd php7.0-mcrypt
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # adding configuration files and scripts
