@@ -23,7 +23,7 @@ RUN rm -rf /var/lib/mysql/*
 ADD apache.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 
-VOLUME /var/www/html
+
 
 # downloading and setting up webmail
 RUN rm -rf /tmp/alwm
@@ -31,6 +31,7 @@ RUN mkdir -p /tmp/alwm
 RUN wget -P /tmp/alwm https://afterlogic.org/download/webmail-lite-php-8.zip
 RUN unzip -q /tmp/alwm/webmail-lite-php-8.zip -d /tmp/alwm/webmail
 RUN rm -rf /var/www/html
+VOLUME /var/www/html
 RUN mkdir -p /var/www/html
 RUN cp -r /tmp/alwm/webmail/* /var/www/html
 RUN rm -rf /var/www/html/install
