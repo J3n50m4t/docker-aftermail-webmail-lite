@@ -23,6 +23,8 @@ RUN rm -rf /var/lib/mysql/*
 ADD apache.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 
+VOLUME /var/www/html
+
 # downloading and setting up webmail
 RUN rm -rf /tmp/alwm
 RUN mkdir -p /tmp/alwm
@@ -44,6 +46,7 @@ ENV PHP_POST_MAX_SIZE 128M
 
 # adding mysql volumes
 VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
+
 
 EXPOSE 80 3306
 CMD ["/run.sh"]
