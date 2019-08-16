@@ -4,7 +4,7 @@ MAINTAINER AfterLogic Support <dockerimages@j3n50m4t.com>
 # installing packages and dependencies
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
-RUN apt-get -y install wget unzip supervisor apache2 libapache2-mod-php7.0 mysql-server php7.0 php7.0-common php7.0-curl php7.0-fpm php7.0-cli php7.0-mysqlnd php7.0-mcrypt
+RUN apt-get -y install wget unzip supervisor apache2 libapache2-mod-php7.0 mysql-server php7.0 php7.0-common php7.0-curl php7.0-fpm php7.0-cli php7.0-mysqlnd php7.0-mcrypt php7.0-mbstring php7.0-xml
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # adding configuration files and scripts
