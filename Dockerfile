@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER AfterLogic Support <support@afterlogic.com>
+MAINTAINER AfterLogic Support <dockerimages@j3n50m4t.com>
 
 # installing packages and dependencies
 ENV DEBIAN_FRONTEND noninteractive
@@ -26,8 +26,9 @@ RUN a2enmod rewrite
 # downloading and setting up webmail
 RUN rm -rf /tmp/alwm
 RUN mkdir -p /tmp/alwm
-RUN wget -P /tmp/alwm http://www.afterlogic.com/download/webmail_php.zip
+RUN wget -P /tmp/alwm https://afterlogic.org/download/webmail-lite-php-8.zip
 RUN unzip -q /tmp/alwm/webmail_php.zip -d /tmp/alwm/
+RUN unzip -q /tmp/alwm/webmail-lite-php-8.zip -d /tmp/alwm/webmail
 RUN rm -rf /var/www/html
 RUN mkdir -p /var/www/html
 RUN cp -r /tmp/alwm/webmail/* /var/www/html
