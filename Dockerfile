@@ -27,7 +27,6 @@ RUN a2enmod rewrite
 RUN rm -rf /tmp/alwm
 RUN mkdir -p /tmp/alwm
 RUN wget -P /tmp/alwm https://afterlogic.org/download/webmail-lite-php-8.zip
-RUN unzip -q /tmp/alwm/webmail_php.zip -d /tmp/alwm/
 RUN unzip -q /tmp/alwm/webmail-lite-php-8.zip -d /tmp/alwm/webmail
 RUN rm -rf /var/www/html
 RUN mkdir -p /var/www/html
