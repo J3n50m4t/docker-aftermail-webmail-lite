@@ -1,6 +1,4 @@
 FROM debian:stretch
-MAINTAINER AfterLogic Support <dockerimages@j3n50m4t.com>
-
 # installing packages and dependencies
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
@@ -22,16 +20,13 @@ RUN rm -rf /var/lib/mysql/*
 # setting up default apache config
 ADD apache.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
-
-
-
+RUN a2enmod proxy_fcgi setenvif
+RUN a2enconf php7.0-fpm
 # downloading and setting up webmail
 RUN rm -rf /tmp/alwm
 RUN mkdir -p /tmp/alwm
 RUN wget -P /tmp/alwm https://afterlogic.org/download/webmail-lite-php-8.zip
 RUN unzip -q /tmp/alwm/webmail-lite-php-8.zip -d /tmp/alwm/webmail
-
-
 RUN mkdir -p /var/www/html
 RUN cp -r /tmp/alwm/webmail/* /var/www/html
 RUN rm -rf /var/www/html/install
@@ -46,9 +41,7 @@ ENV PHP_UPLOAD_MAX_FILESIZE 64M
 ENV PHP_POST_MAX_SIZE 128M
 
 # adding mysql volumes
-VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
-
+VOLUME  ["/etc/mysql", "/var/lib/mysql"]
 
 EXPOSE 80 3306
 CMD ["/run.sh"]
-VOLUME /var/www/html
